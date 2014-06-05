@@ -3,7 +3,7 @@
 //Articles service used for articles REST endpoint
 angular.module('mean').factory('Articles', ['$resource',
 	function($resource) {
-		return $resource('articles/:articleId', {
+		return $resource('recipes/:articleId', {
 			articleId: '@_id'
 		}, {
 			update: {
