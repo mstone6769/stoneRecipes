@@ -10,6 +10,16 @@ var mongoose = require('mongoose'),
 /**
  * Article Schema
  */
+
+var IngredientSchema = new Schema ({
+	ingredient: String,
+	amount: Number,
+	amountFraction: Number,
+	measurement: String
+});
+// 
+// mongoose.model('Ingredients', IngredientsSchema);
+
 var ArticleSchema = new Schema({
     created: {
         type: Date,
@@ -20,11 +30,7 @@ var ArticleSchema = new Schema({
         default: '',
         trim: true
     },
-    ingredients: {
-        type: String,
-        default: '',
-        trim: true
-    },
+    ingredients: [IngredientSchema],
     content: {
         type: String,
         default: '',
@@ -51,5 +57,6 @@ ArticleSchema.statics.load = function(id, cb) {
         _id: id
     }).populate('user', 'name username').exec(cb);
 };
+
 
 mongoose.model('Article', ArticleSchema);
