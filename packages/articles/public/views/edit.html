@@ -17,11 +17,18 @@
                       <input type="text" class="form-control" ng-model="ingredient.ingredient" placeholder="Ingredient" required>
                     </div>
                     <div class="col-md-2">
-                      <select class="form-control" ng-model="ingredient.amount" ng-options="option.value as option.value for option in wholeNumbers | orderBy: value" required>
+                      <!-- <select class="form-control" ng-model="ingredient.amount" ng-options="option.value for option in wholeNumbers | orderBy: value" required>
+                      </select> -->
+                      <select class="form-control" ng-model="ingredient.amount" required>
+                        <option ng-repeat="option in wholeNumbers | orderBy:value" value="{{option.value}}" ng-selected="isSelected(ingredient.amount, option.value)">{{option.value}}</option>
+                        
                       </select>
                     </div>
                     <div class="col-md-2">
-                      <select class="form-control" ng-model="ingredient.amountFraction" ng-options="option.value as option.fraction for option in fractions | orderBy: value" required>
+                      <!-- <select class="form-control" ng-model="ingredient.amountFraction" ng-options="option.value as option.fraction for option in fractions | orderBy: value" required>
+                                            </select> -->
+                      <select class="form-control" ng-model="ingredient.amountFraction" required>
+                        <option ng-repeat="option in fractions | orderBy:value" value="{{option.value}}" ng-selected="isSelected(ingredient.amountFraction, option.value)">{{option.fraction}}</option>
                       </select>
                       
                     </div>
@@ -38,19 +45,8 @@
                       <hr>
                     </div>
                   </div>
-                  
-                  
-                  <!-- <input type="text" class="form-control" ng-model="ingredient.ingredient" placeholder="Ingredient" required>
-                                    <input type="text" class="form-control" ng-model="ingredient.amount" placeholder="Amount" required>
-                                    <input type="text" class="form-control" ng-model="ingredient.amountFraction" placeholder="Fraction">
-                                    <select  class="form-control" ng-model="ingredient.measurement" required>
-                                      <option ng-repeat="measurement in measurements | orderBy:'name'" value="{{measurement.name}}" ng-selected="isSelected(ingredient.measurement, measurement.name)">{{measurement.name}}</option>
-                                    </select>
-                                    <span ng-show="ingredients.length > 1">
-                                        <a href ng-click="ingredients.splice($index, 1)" class="btn"><i class="glyphicon glyphicon-minus"></i></a>
-                                    </span>
-                                  </li>
-                                  <li><a href ng-click="addIngredient()" class="btn"><i class="glyphicon glyphicon-plus"></i></a> --></li>
+                </li>
+                <li><a href ng-click="addIngredient()" class="btn"><i class="glyphicon glyphicon-plus"></i></a></li>
               </ul>
                                   
                 
