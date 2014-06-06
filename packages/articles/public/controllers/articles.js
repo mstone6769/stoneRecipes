@@ -142,7 +142,7 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
 				
 				if(typeof $scope.ingredients === 'undefined') {
 				    $scope.ingredients = [
-					    {ingredient:'', amount: '1', amountFraction: '0', measurement: 'tablespoon(s)'}
+					    {ingredient:'', amount: 1, amountFraction: '0', measurement: 'tablespoon(s)'}
 					  ];
 				  }
 				
@@ -151,7 +151,7 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
 					if(typeof $scope.ingredients === 'undefined') {
 					    $scope.ingredients = [];
 					  }
-			    $scope.ingredients.push({ingredient:'', amount: '1', amountFraction: '0', measurement: 'tablespoon(s)'});
+			    $scope.ingredients.push({ingredient:'', amount: 1, amountFraction: '0', measurement: 'tablespoon(s)'});
 			  };
 
         $scope.findOne = function() {
