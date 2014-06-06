@@ -42,26 +42,26 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
 				];
 				
 				$scope.fractions = [
-					{fraction: '0', value: '0'},
-					{fraction: '1/16', value: '0.0625'},
-				  {fraction: '1/8', value: '0.125'},
-				  {fraction: '1/6', value: '0.1667'},
-				  {fraction: '3/16', value: '0.1875'},
-				  {fraction: '1/4', value: '0.25'},
-				  {fraction: '5/16', value: '0.3125'},
-				  {fraction: '1/3', value: '0.3333'},
-				  {fraction: '3/8', value: '0.375'},
-				  {fraction: '7/16', value: '0.4375'},
-				  {fraction: '1/2', value: '0.5'},
-				  {fraction: '9/16', value: '0.5625'},
-				  {fraction: '5/8', value: '0.625'},
-				  {fraction: '2/3', value: '0.667'},
-				  {fraction: '11/16', value: '0.6875'},
-				  {fraction: '3/4', value: '0.75'},
-				  {fraction: '13/16', value: '0.8125'},
-				  {fraction: '5/6', value: '0.833'},
-				  {fraction: '7/8', value: '0.875'},
-				  {fraction: '15/16', value: '0.9375'} 
+					{fraction: '0', value: 0},
+					{fraction: '1/16', value: 0.0625},
+				  {fraction: '1/8', value: 0.125},
+				  {fraction: '1/6', value: 0.1667},
+				  {fraction: '3/16', value: 0.1875},
+				  {fraction: '1/4', value: 0.25},
+				  {fraction: '5/16', value: 0.3125},
+				  {fraction: '1/3', value: 0.3333},
+				  {fraction: '3/8', value: 0.375},
+				  {fraction: '7/16', value: 0.4375},
+				  {fraction: '1/2', value: 0.5},
+				  {fraction: '9/16', value: 0.5625},
+				  {fraction: '5/8', value: 0.625},
+				  {fraction: '2/3', value: 0.667},
+				  {fraction: '11/16', value: 0.6875},
+				  {fraction: '3/4', value: 0.75},
+				  {fraction: '13/16', value: 0.8125},
+				  {fraction: '5/6', value: 0.833},
+				  {fraction: '7/8', value: 0.875},
+				  {fraction: '15/16', value: 0.9375} 
 				];
 
 
@@ -142,7 +142,7 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
 				
 				if(typeof $scope.ingredients === 'undefined') {
 				    $scope.ingredients = [
-					    {ingredient:'', amount: 1, amountFraction: '0', measurement: 'tablespoon(s)'}
+					    {ingredient:'', amount: 1, amountFraction: 0, measurement: 'tablespoon(s)'}
 					  ];
 				  }
 				
@@ -151,7 +151,7 @@ angular.module('mean').controller('ArticlesController', ['$scope', '$stateParams
 					if(typeof $scope.ingredients === 'undefined') {
 					    $scope.ingredients = [];
 					  }
-			    $scope.ingredients.push({ingredient:'', amount: 1, amountFraction: '0', measurement: 'tablespoon(s)'});
+			    $scope.ingredients.push({ingredient:'', amount: 1, amountFraction: 0, measurement: 'tablespoon(s)'});
 			  };
 
         $scope.findOne = function() {
