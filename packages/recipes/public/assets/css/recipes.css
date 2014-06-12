@@ -1,3 +1,12 @@
 .recipes-example h1: {
 	background-color: purple
 }
+
+.ui-sortable textarea.form-control {
+	margin-top: 0;
+	
+}
+
+.ingredients li, .directions li {
+	padding-bottom: 1em;
+}

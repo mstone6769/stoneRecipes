@@ -7,6 +7,9 @@ var Module = require('meanio').Module;
 
 var Recipes = new Module('recipes');
 
+
+
+
 /*
  * All MEAN packages require registration
  * Dependency injection is used to define required modules
@@ -30,6 +33,10 @@ Recipes.register(function(app, auth, database) {
         roles: ['authenticated'],
         menu: 'main'
     });
+
+    Recipes.aggregateAsset('css','recipes.css');
+    Recipes.aggregateAsset('js','sortable.js', {global: true});
+    Recipes.angularDependencies(['ui.sortable']);
 
     /**
     //Uncomment to use. Requires meanio@0.3.7 or above

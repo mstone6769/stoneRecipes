@@ -7,14 +7,53 @@
             </div>
         </div>
         <div class="form-group">
-            <label mean-token="'create-description'" for="description" class="col-md-3 control-label">Ingredients</label>
+            <label mean-token="'create-description'" for="description" class="col-md-3 control-label">Description</label>
             <div class="col-md-9">
-              <ul class="list-unstyled">
+                <input type="text" data-ng-model="description" id="description" placeholder="Short 1 line description" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label mean-token="'create-yield'" class="col-md-3 control-label">Yield</label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" data-ng-model="yield" id="yield" placeholder="Number of Servings" required>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <label mean-token="'create-time'" class="col-md-3 control-label">Time</label>
+            <div class="col-md-9">
+               
+                <label>
+                  Prep Time
+                  <input type="number" min="0" max="10000" class="form-control input-lg" data-ng-model="time.prep" id="prep">
+                  <span class="help-block">Minutes</span>
+                </label>
+                <label>
+                  Inactive Time
+                  <input type="number" min="0" max="10000" class="form-control input-lg" data-ng-model="time.inactive" id="inactive">
+                  <span class="help-block">Minutes</span>
+                </label>
+                <label>
+                  Cook Time
+                  <input type="number" min="0" max="10000" class="form-control input-lg" data-ng-model="time.cook" id="cook">
+                  <span class="help-block">Minutes</span>
+                </label>
+                <div ng-show="(time.prep + time.inactive + time.cook) > 0">
+                  <strong>Total time: {{time.prep + time.inactive + time.cook }} min.</strong>
+                </div>
+
+
+            </div>
+        </div>
+        
+        <div class="form-group">
+          <hr>
+            <label mean-token="'create-ingredients'" for="ingredients" class="col-md-3 control-label">Ingredients</label>
+            <div class="col-md-9">
+              <ul class="list-unstyled ingredients">
                 <li ng-repeat="ingredient in ingredients">
                   <div class="row">
-                    <div class="col-md-3">
-                      <input type="text" class="form-control" ng-model="ingredient.name" placeholder="Ingredient" required>
-                    </div>
+                    
                     <div class="col-md-2">
                       <select  class="form-control" ng-model="ingredient.amount" ng-options="option.value as option.value for option in wholeNumbers" required>
                       </select>
@@ -25,30 +64,53 @@
                       
                     </div>
                     <div class="col-md-3">
-                      <select  class="form-control" ng-model="ingredient.measurement" ng-options="option.name as option.name for option in measurements | orderBy: 'name'" required>
+                      <select  class="form-control" ng-model="ingredient.measurement" ng-options="option.value as option.name for option in measurements | orderBy: 'name'" required>
                       </select>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" ng-model="ingredient.name" placeholder="Ingredient" required>
                     </div>
                     <div class="col-md-2">
                       <span ng-show="ingredients.length > 1">
-                        <a href ng-click="ingredients.splice($index, 1)" class="btn"><i class="glyphicon glyphicon-minus"></i></a>
+                        <a href ng-click="ingredients.splice($index, 1)" class="btn"><i class="glyphicon glyphicon-remove"></i></a>
                       </span>
-                    </div>
-                    <div class="col-md-12">
-                      <hr>
                     </div>
                   </div>
                 </li>
-                <li><a href ng-click="addIngredient()" class="btn"><i class="glyphicon glyphicon-plus"></i></a></li>
+                <li><hr><a href ng-click="addIngredient()" class="btn"><i class="glyphicon glyphicon-plus"></i> Add Ingredient</a></li>
               </ul>
                
             </div>
         </div>
         <div class="form-group">
-            <label mean-token="'create-description'" for="description" class="col-md-3 control-label">Description</label>
+          <hr>
+            <label mean-token="'create-directions'" for="directions" class="col-md-3 control-label">Directions</label>
             <div class="col-md-9">
-                <textarea data-ng-model="description" id="description" cols="30" rows="10" placeholder="Description" class="form-control" required></textarea>
+              <ol class="list-unstyled directions" ui-sortable ng-model="directions">
+                <li ng-repeat="step in directions track by $index">
+                  <div class="row">
+                    <div class="col-md-1">
+                      {{$index + 1}}.
+                    </div>
+                    <div class="col-md-9">
+                      <textarea class="form-control" cols="30" rows="5" ng-model="step.content" placeholder="Step {{$index + 1}}" required></textarea>
+                    </div>
+                    <div class="col-md-2">
+                      <span ng-show="directions.length > 1">
+                        <a href ng-click="moveUp($index)" ng-show="$index > 0" class="btn"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href ng-click="moveDown($index)" ng-show="$index != (directions.length - 1 )" class="btn"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                        <br>
+                        <a href ng-click="directions.splice($index, 1)" class="btn"><i class="glyphicon glyphicon-remove"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+              <hr>
+               <a href ng-click="addStep()" class="btn"><i class="glyphicon glyphicon-plus"></i> Add Step</a>
             </div>
         </div>
+        
         <div class="form-group">
             <div class="col-md-offset-3 col-md-9">
                 <button type="submit" class="btn btn-info">Submit</button>

@@ -1,0 +1,64 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'ui-sortable' ]
+2 info using npm@1.3.11
+3 info using node@v0.10.21
+4 warn package.json mean-connect-mongo@0.4.3 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'ui-sortable', null ]
+7 verbose cache add name=undefined spec="ui-sortable" args=["ui-sortable",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'ui-sortable',
+8 verbose parsed url   path: 'ui-sortable',
+8 verbose parsed url   href: 'ui-sortable' }
+9 silly lockFile 49c2555e-ui-sortable ui-sortable
+10 verbose lock ui-sortable /Users/mstone/.npm/49c2555e-ui-sortable.lock
+11 silly lockFile 49c2555e-ui-sortable ui-sortable
+12 silly lockFile 49c2555e-ui-sortable ui-sortable
+13 verbose addNamed [ 'ui-sortable', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile 2f4c868a-ui-sortable ui-sortable@
+16 verbose lock ui-sortable@ /Users/mstone/.npm/2f4c868a-ui-sortable.lock
+17 silly addNameRange { name: 'ui-sortable', range: '*', hasData: false }
+18 verbose url raw ui-sortable
+19 verbose url resolving [ 'https://registry.npmjs.org/', './ui-sortable' ]
+20 verbose url resolved https://registry.npmjs.org/ui-sortable
+21 info trying registry request attempt 1 at 20:18:00
+22 http GET https://registry.npmjs.org/ui-sortable
+23 http 404 https://registry.npmjs.org/ui-sortable
+24 silly registry.get cb [ 404,
+24 silly registry.get   { date: 'Mon, 09 Jun 2014 01:17:56 GMT',
+24 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+24 silly registry.get     'content-type': 'application/json',
+24 silly registry.get     'cache-control': 'max-age=0',
+24 silly registry.get     'content-length': '52',
+24 silly registry.get     'accept-ranges': 'bytes',
+24 silly registry.get     via: '1.1 varnish',
+24 silly registry.get     age: '0',
+24 silly registry.get     'x-served-by': 'cache-ord1729-ORD',
+24 silly registry.get     'x-cache': 'MISS',
+24 silly registry.get     'x-cache-hits': '0',
+24 silly registry.get     'x-timer': 'S1402276676.388459,VS0,VE39',
+24 silly registry.get     'keep-alive': 'timeout=10, max=50',
+24 silly registry.get     connection: 'Keep-Alive' } ]
+25 silly lockFile 2f4c868a-ui-sortable ui-sortable@
+26 silly lockFile 2f4c868a-ui-sortable ui-sortable@
+27 error 404 'ui-sortable' is not in the npm registry.
+27 error 404 You should bug the author to publish it
+27 error 404
+27 error 404 Note that you can also install from a
+27 error 404 tarball, folder, or http url, or git url.
+28 error System Darwin 11.4.2
+29 error command "node" "/usr/local/bin/npm" "install" "ui-sortable"
+30 error cwd /Users/mstone/Documents/Work/recipe-app/stoneRecipes
+31 error node -v v0.10.21
+32 error npm -v 1.3.11
+33 error code E404
+34 verbose exit [ 1, true ]

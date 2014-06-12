@@ -1,7 +1,4 @@
 <section data-ng-controller="RecipesController" data-ng-init="findOne()">
-    <span>{{recipe.created | date:'medium'}}</span> /
-    <span>{{recipe.user.name}}</span>
-    <h2>{{recipe.title}}</h2>
     <div data-ng-if="hasAuthorization(recipe)">
         <a class="btn" href="/#!/recipes/{{recipe._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>
@@ -10,18 +7,30 @@
             <i class="glyphicon glyphicon-trash"></i>
         </a>
     </div>
+    <span>{{recipe.created | date:'medium'}}</span> /
+    <span>{{recipe.user.name}}</span>
+    <h2>{{recipe.title}}</h2>
+    <em>{{recipe.description}}</em>
+    <div class="time">
+        <h3>Total Time: {{time.inactive + time.prep + time.cook}} minutes</h3>
+        <span ng-show="time.prep > 0">Prep Time: {{time.prep}} min</span> <span ng-show="time.inactive > 0"><span ng-show="time.prep > 0">|</span> Inactive Time: {{time.inactive}} min</span> <span ng-show="time.cook > 0">| Cook Time: {{time.cook}} min</span>
+    </div>
     <div>
         <h3>Ingredients</h3>
         <ul>
           <li data-ng-repeat="ingredient in recipe.ingredients">
             {{ingredient.amount + ingredient.amountFraction}}
-            {{ingredient.measurement}}
+            <span ng-show="ingredient.measurement != 'no unit necessary'">{{ingredient.measurement}}</span>
             {{ingredient.name}}
           </li>
         </ul>
     </div>
     <div>
-        <h3>Description</h3>
-        {{recipe.description}}
+        <h3>Directions</h3>
+        <ol>
+          <li data-ng-repeat="step in recipe.directions">
+            {{step.content}}
+          </li>
+        </ol>
     </div>
 </section>

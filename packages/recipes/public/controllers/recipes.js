@@ -1,5 +1,8 @@
 'use strict';
 
+
+
+
 angular.module('mean.recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 'Global', 'Recipes',
     function($scope, $stateParams, $location,  Global, Recipes) {
         $scope.global = Global;
@@ -32,17 +35,19 @@ angular.module('mean.recipes').controller('RecipesController', ['$scope', '$stat
 		
 
 		$scope.measurements = [
-			{name: 'tablespoon(s)'},
-			{name: 'teaspoon(s)'}, 
-			{name: 'cup(s)'},
-			{name: 'fluid ounce(s)'}, 
-			{name: 'pint(s)'}, 
-			{name: 'quart(s)'}, 
-			{name: 'gallon(s)'}, 
-			{name: 'ounce(s)'}, 
-			{name: 'mililiter(s)'}, 
-			{name: 'pound(s)'}, 
-			{name: 'liter(s)'}
+			{name: 'tablespoon(s)', value: 'tablespoon(s)'},
+			{name: 'teaspoon(s)', value: 'teaspoon(s)'},
+			{name: 'no unit necessary', value: ' '},
+			{name: 'clove(s)', value: 'clove(s)'}, 
+			{name: 'cup(s)', value: 'cup(s)'},
+			{name: 'fluid ounce(s)', value: 'fluid ounce(s)'}, 
+			{name: 'pint(s)', value: 'pint(s)'}, 
+			{name: 'quart(s)', value: 'quart(s)'}, 
+			{name: 'gallon(s)', value: 'gallon(s)'}, 
+			{name: 'ounce(s)', value: 'ounce(s)'}, 
+			{name: 'mililiter(s)', value: 'mililiter(s)'}, 
+			{name: 'pound(s)', value: 'pound(s)'}, 
+			{name: 'liter(s)', value: 'liter(s)'}
 		];
 		
 		$scope.fractions = [
@@ -75,6 +80,9 @@ angular.module('mean.recipes').controller('RecipesController', ['$scope', '$stat
 						
             var recipe = new Recipes({
                 title: this.title,
+                time: this.time,
+                directions: this.directions,
+                yield: this.yield,
                 ingredients: this.ingredients,
                 description: this.description
             });
@@ -140,6 +148,31 @@ angular.module('mean.recipes').controller('RecipesController', ['$scope', '$stat
 		  }
 		
 
+		if(typeof $scope.directions === 'undefined') {
+		    $scope.directions = [
+			    {content:''}
+			  ];
+		  }
+
+		$scope.moveUp = function (index) {
+			
+			var object = $scope.directions[index],
+				newIndex = index-1;
+			console.log(newIndex);
+			$scope.directions.splice(index, 1);
+			$scope.directions.splice(newIndex, 0, object);
+		};
+
+		$scope.moveDown = function (index) {
+			
+			var object = $scope.directions[index],
+				newIndex = index+1;
+			console.log(newIndex);
+			$scope.directions.splice(index, 1);
+			$scope.directions.splice(newIndex, 0, object);
+		};
+
+
 		$scope.addIngredient = function () {
 			if(typeof $scope.ingredients === 'undefined') {
 			    $scope.ingredients = [];
@@ -147,12 +180,24 @@ angular.module('mean.recipes').controller('RecipesController', ['$scope', '$stat
 	    	$scope.ingredients.push({name:'', amount: 1, amountFraction: 0, measurement: 'tablespoon(s)'});
 	  	};
 
+
+
+	  	$scope.addStep = function () {
+			if(typeof $scope.directions === 'undefined') {
+			    $scope.directions = [];
+			  }
+	    	$scope.directions.push({content:''});
+	  	};
+
+
         $scope.findOne = function() {
             Recipes.get({
                 recipeId: $stateParams.recipeId
             }, function(recipe) {
                 $scope.recipe = recipe;
-								$scope.ingredients = recipe.ingredients;
+				$scope.ingredients = recipe.ingredients;
+				$scope.time = recipe.time;
+				$scope.directions = recipe.directions;
 								//$scope.ingredient.amount = $scope.wholeNumbers[1];
             });
         };
