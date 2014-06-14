@@ -154,42 +154,6 @@ angular.module('mean.recipes').controller('RecipesController', ['$scope', '$stat
 			  ];
 		  }
 
-		$scope.moveUp = function (index) {
-			
-			var object = $scope.directions[index],
-				newIndex = index-1;
-			console.log(newIndex);
-			$scope.directions.splice(index, 1);
-			$scope.directions.splice(newIndex, 0, object);
-		};
-
-		$scope.moveDown = function (index) {
-			
-			var object = $scope.directions[index],
-				newIndex = index+1;
-			console.log(newIndex);
-			$scope.directions.splice(index, 1);
-			$scope.directions.splice(newIndex, 0, object);
-		};
-
-
-		$scope.addIngredient = function () {
-			if(typeof $scope.ingredients === 'undefined') {
-			    $scope.ingredients = [];
-			  }
-	    	$scope.ingredients.push({name:'', amount: 1, amountFraction: 0, measurement: 'tablespoon(s)'});
-	  	};
-
-
-
-	  	$scope.addStep = function () {
-			if(typeof $scope.directions === 'undefined') {
-			    $scope.directions = [];
-			  }
-	    	$scope.directions.push({content:''});
-	  	};
-
-
         $scope.findOne = function() {
             Recipes.get({
                 recipeId: $stateParams.recipeId

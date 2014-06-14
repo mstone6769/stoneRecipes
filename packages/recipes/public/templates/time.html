@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col-md-3">
+		<label>
+			Prep Time
+			<div class="input-group">
+				<input type="number" min="0" max="10000" class="form-control input-lg" ng-model="time.prep" id="prep">
+				<span class="input-group-addon">Min.</span>
+			</div>
+		</label>
+	</div>
+	<div class="col-md-3">
+		<label>
+			Inactive Time
+			<div class="input-group">
+				<input type="number" min="0" max="10000" class="form-control input-lg" ng-model="time.inactive" id="inactive">
+				<span class="input-group-addon">Min.</span>
+			</div>
+		</label>
+	</div>
+	<div class="col-md-3">
+		<label>
+			Cook Time
+			<div class="input-group">
+				<input type="number" min="0" max="10000" class="form-control input-lg" ng-model="time.cook" id="cook">
+				<span class="input-group-addon">Min.</span>
+			</div>
+		</label>
+	</div>
+	<div class="col-md-3">
+		<label ng-show="(time.prep + time.inactive + time.cook) > 0">
+			Total Time
+			<div class="input-group">
+				<input type="number"class="form-control input-lg" value="{{time.prep + time.inactive + time.cook }}" id="total" disabled>
+				<span class="input-group-addon">Min.</span>
+			</div>
+		</label>
+	</div>
+</div>

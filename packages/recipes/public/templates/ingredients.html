@@ -1,0 +1,27 @@
+<ul class="list-unstyled ingredients">
+	<li ng-repeat="ingredient in ingredients">
+	  <div class="row">
+	    <div class="col-md-2">
+	      <select  class="form-control" ng-model="ingredient.amount" ng-options="option.value as option.value for option in wholeNumbers" required>
+	      </select>
+	    </div>
+	    <div class="col-md-2">
+	      <select  class="form-control" ng-model="ingredient.amountFraction" ng-options="option.value as option.fraction for option in fractions" required>
+	      </select>
+	    </div>
+	    <div class="col-md-3">
+	      <select  class="form-control" ng-model="ingredient.measurement" ng-options="option.name as option.name for option in measurements | orderBy: 'name'" required>
+	      </select>
+	    </div>
+	    <div class="col-md-3">
+	      <input type="text" class="form-control" ng-model="ingredient.name" placeholder="Ingredient" required>
+	    </div>
+	    <div class="col-md-2">
+	      <span ng-show="ingredients.length > 1">
+	        <a href ng-click="ingredients.splice($index, 1)" class="btn"><i class="glyphicon glyphicon-remove"></i></a>
+	      </span>
+	    </div>
+	  </div>
+	</li>
+	<li><hr><a href ng-click="addIngredient()" class="btn"><i class="glyphicon glyphicon-plus"></i> Add Ingredient</a></li>
+</ul>

@@ -1,9 +1,9 @@
 <section data-ng-controller="RecipesController" data-ng-init="findOne()">
     <form class="form-horizontal col-md-12" role="form" name="form" data-ng-submit="update()">
         <div class="form-group">
-            <label mean-token="'edit-title'" class="col-md-3 control-label">Title</label>
+            <label mean-token="'edit-title'" class="col-md-3 input-lg control-label">Title</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" data-ng-model="recipe.title" id="title" placeholder="Title" required>
+                <input type="text" class="form-control input-lg " data-ng-model="recipe.title" id="title" placeholder="Title" required>
             </div>
         </div>
         <div class="form-group">
@@ -22,27 +22,7 @@
 
             <label mean-token="'edit-time'" class="col-md-3 control-label">Time</label>
             <div class="col-md-9">
-               
-                <label>
-                  Prep Time
-                  <input type="number" min="0" max="10000" class="form-control input-lg" data-ng-model="time.prep" id="prep">
-                  <span class="help-block">Minutes</span>
-                </label>
-                <label>
-                  Inactive Time
-                  <input type="number" min="0" max="10000" class="form-control input-lg" data-ng-model="time.inactive" id="inactive">
-                  <span class="help-block">Minutes</span>
-                </label>
-                <label>
-                  Cook Time
-                  <input type="number" min="0" max="10000" class="form-control input-lg" data-ng-model="time.cook" id="cook">
-                  <span class="help-block">Minutes</span>
-                </label>
-                <div ng-show="(time.prep + time.inactive + time.cook) > 0">
-                  <strong>Total time: {{time.prep + time.inactive + time.cook }} min.</strong>
-                </div>
-
-
+                <edittime time="time"></edittime>
             </div>
         </div>
         
@@ -50,64 +30,14 @@
           <hr>
             <label mean-token="'edit-ingredients'" for="ingredients" class="col-md-3 control-label">Ingredients</label>
             <div class="col-md-9">
-              <ul class="list-unstyled ingredients">
-                <li ng-repeat="ingredient in ingredients">
-                  <div class="row">
-                    
-                    <div class="col-md-2">
-                      <select  class="form-control" ng-model="ingredient.amount" ng-options="option.value as option.value for option in wholeNumbers" required>
-                      </select>
-                    </div>
-                    <div class="col-md-2">
-                      <select  class="form-control" ng-model="ingredient.amountFraction" ng-options="option.value as option.fraction for option in fractions" required>
-                      </select>
-                      
-                    </div>
-                    <div class="col-md-3">
-                      <select  class="form-control" ng-model="ingredient.measurement" ng-options="option.name as option.name for option in measurements | orderBy: 'name'" required>
-                      </select>
-                    </div>
-                    <div class="col-md-3">
-                      <input type="text" class="form-control" ng-model="ingredient.name" placeholder="Ingredient" required>
-                    </div>
-                    <div class="col-md-2">
-                      <span ng-show="ingredients.length > 1">
-                        <a href ng-click="ingredients.splice($index, 1)" class="btn"><i class="glyphicon glyphicon-remove"></i></a>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li><hr><a href ng-click="addIngredient()" class="btn"><i class="glyphicon glyphicon-plus"></i> Add Ingredient</a></li>
-              </ul>
-               
+              <editingredients ingredients="ingredients"></editingredients>
             </div>
         </div>
         <div class="form-group">
           <hr>
             <label mean-token="'edit-directions'" for="directions" class="col-md-3 control-label">Directions</label>
             <div class="col-md-9">
-              <ol class="list-unstyled directions" ui-sortable ng-model="directions">
-                <li ng-repeat="step in directions track by $index">
-                  <div class="row">
-                    <div class="col-md-1">
-                      {{$index + 1}}.
-                    </div>
-                    <div class="col-md-9">
-                      <textarea class="form-control" cols="30" rows="5" ng-model="step.content" placeholder="Step {{$index + 1}}" required></textarea>
-                    </div>
-                    <div class="col-md-2">
-                      <span ng-show="directions.length > 1">
-                        <a href ng-click="moveUp($index)" ng-show="$index > 0" class="btn"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                        <a href ng-click="moveDown($index)" ng-show="$index != (directions.length - 1 )" class="btn"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                        <br>
-                        <a href ng-click="directions.splice($index, 1)" class="btn"><i class="glyphicon glyphicon-remove"></i></a>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ol>
-              <hr>
-               <a href ng-click="addStep()" class="btn"><i class="glyphicon glyphicon-plus"></i> Add Step</a>
+              <editdirections directions="directions"></editdirections>
             </div>
         </div>
         <div class="form-group">

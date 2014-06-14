@@ -35,8 +35,8 @@ Recipes.register(function(app, auth, database) {
     });
 
     Recipes.aggregateAsset('css','recipes.css');
-    Recipes.aggregateAsset('js','sortable.js', {global: true});
-    Recipes.angularDependencies(['ui.sortable']);
+    //Recipes.aggregateAsset('js','sortable.js', {global: true});
+    //Recipes.angularDependencies(['ui.sortable']);
 
     /**
     //Uncomment to use. Requires meanio@0.3.7 or above
